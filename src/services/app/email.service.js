@@ -18,10 +18,10 @@ if (config.env !== 'test') {
  * @param {object} options
  * @returns {Promise}
  */
-const sendEmail = async (to, subject, options) => {
-  const msg = { from: config.email.from, to, subject, ...options };
-  await transport.sendMail(msg);
-};
+// const sendEmail = async (to, subject, options) => {
+//   const msg = { from: config.email.from, to, subject, ...options };
+//   await transport.sendMail(msg);
+// };
 
 /**
  * Send reset password email
@@ -313,13 +313,11 @@ const sendVerificationEmail = async (to, token) => {
       </div>
     </body>
   </html>`;
-
-  await sendEmail(to, subject, { html });
+  return { html };
 };
 
 module.exports = {
   transport,
-  sendEmail,
   sendResetPasswordEmail,
   sendVerificationEmail,
 };

@@ -64,14 +64,6 @@ app.get('/', (req, res) => {
 // v1 api routes
 app.use('/v1', routes);
 app.use('/admin', adminRoutes);
-app.use(
-  '/file',
-  createProxyMiddleware({
-    target: process.env.URL_UPLOAD_FILE,
-    changeOrigin: true,
-    logger: console,
-  })
-);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
